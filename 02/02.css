@@ -1,0 +1,69 @@
+body {
+    background-color: rgb(191, 202, 224);
+    padding: 0px;
+    margin: 0px;
+}
+
+header>div{
+    text-align: left;
+    font-size: 35px;
+    padding: 15px;
+}
+
+header > ul{
+    
+    display: flex;
+     justify-content: flex-end;
+    /* 양옆의 위치 */
+    align-items: top;
+    margin-right: 30px;
+}
+
+a {
+    text-decoration: none;
+    color: white;
+    display: inline-flex;
+    padding: 5px;
+    background-color: cornflowerblue;
+}
+
+article{
+    padding: 15px;
+}
+
+section {
+    background-color: white;
+    margin-left: 10px;
+    margin-right: 10px;
+}
+
+section p {
+    display: flex;
+    align-items: center;
+}
+
+img {
+    border-radius: 50%;
+    margin: 0 30px 30px;
+    /* margin-left: 15px;
+    margin-right: 15px;
+    margin-bottom: 15px;
+    margin-top: 0px; */
+}
+
+h2 {
+    padding: 15px 15px 0 15px;
+}
+
+footer {
+    background-color: black;
+    color: white;
+    padding: 10px;
+
+}
+
+footer p{
+    display: flex;
+    justify-content: center;
+    align-items: center; 
+}

@@ -8,5 +8,5 @@
 +마크다운 참조
     +http://gist.github.com/ihoneymon/654be052a0727ad59601
 +git 설정
-    +git config global user.name "choijaehun"
-    +git config global user.email jaehun5708@namer.com
+    +git config --global user.name "choijaehun"
+    +git config --global user.email jaehun5708@namer.com

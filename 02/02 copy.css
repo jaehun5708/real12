@@ -1,0 +1,113 @@
+/* ul{
+    background-color: lightblue;
+    color: blue;
+} */
+ /* 전체 셀렉터 */
+*{
+
+    margin: 0px;
+    padding: 0px;
+    /* background-color: beige; */
+}
+/* 태크 셀렉터 */
+header {
+    background-color: aliceblue;
+}
+
+h2 {
+    color: blue;
+}
+/* 중요한거임 클래스 셀렉터 */
+.c1{
+    background-color: yellow;
+}
+
+.c2{
+    background-color: rgb(8, 85, 22);
+}
+/* 배경 전체를 정하고 c2만 색 다르게 하고 싶으면 *대신 body로 하기 */
+
+/* (id) 속성 셀렉터 부모자식 관계 */
+#d1{
+    background-color: aqua;
+}
+/* 힘은 * > # > .  이 순서로 강함 */
+
+#d1>h2{
+    color: blueviolet;
+}
+
+/* header>ul>li{
+    color: cadetblue;
+}  
+자손관계 selector    
+이게 밑에랑 같음 그냥 공백으로 더 편하게 */
+header li{
+    color: brown;
+    list-style: none;
+    margin: 5px;
+}
+img {
+    border-radius: 50%;
+}
+/* 속성 그룹화  */
+img[alt=html],img[alt=js] {
+    width: 100px;
+    height: 100px;
+}
+
+a {
+    text-decoration: none;
+    color: black;
+    display: inline-flex;
+    padding: 5px;
+}
+/* 가상클래스 selector */
+a:hover {
+    color: blue;
+    background-color: chartreuse;
+}
+
+/* 박스모델 */
+article {
+    border: 10px dashed red;
+    margin: 10px 20px 30px 40px; 
+    /* margin 박스 주위 간격 시계방향으로*/
+    padding: 10px 20px 30px 40px;
+    /* padding 박스 안쪽 간격 */
+}
+header {
+    display: flex;
+    justify-content: space-between;
+    /* 양옆의 위치 */
+    align-items: start;
+    /* 위아래의 위치 */
+    padding: 10px;
+    height: 200px;
+}
+
+div, ul {
+    border: 2px solid blue;
+    padding: 20px;
+    margin: 10px;
+    display: flex;
+}
+
+/* 미디어 쿼리
+@media screen and (min-width: 1024px) {
+    body {
+      background-color: lightgreen;
+    }
+    header {
+        background-color: rgb(93, 76, 189);
+        
+      }
+  }
+
+@media screen and (max-width: 1024px){
+    header {
+        background-color: rgb(40, 186, 40);
+        display: flex;
+        flex-direction: column;
+      }
+  }   */

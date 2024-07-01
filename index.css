@@ -28,7 +28,60 @@
     align-items: center;
     padding: 20px;
   }
+
+  a{
+    text-decoration: none;
+    color: white;
+    display: inline-flex;
+    padding: 10px;
+    border-radius: 10px;
+  }
+
+  section, #divTitle, #divContent {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+  }
+  section {
+    width: 100%;
+    
+  }
+
+  a:hover{
+    background-color: white;
+    color: black;
+  }
+  #divTitle, #divContent, #msg {
+    border: 1px dotted gray;
+    width: 90%;
+    padding: 20px;
+  }
+
+  #divTitle {
+    background-color: aliceblue;
+    
+    font-size: x-large;
+    font-weight: bold;
+    margin: 20px;
+    height: 60px;
+    
+  }
   
+  divContent {
+    flex-direction: column;
+    margin-top: 10px;
+    
+  }
+
+  #divContent > p{
+    margin-bottom: 10px;
+  }
+
+  #msg {
+    height:  60px;
+  }
+
   button {
     display: inline-flex ;
     justify-content: center;

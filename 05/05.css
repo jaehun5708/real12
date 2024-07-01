@@ -1,0 +1,42 @@
+form {
+    display: flex;
+    width: 100%;
+    padding: 20px;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+.d1 {
+    display: flex;
+    justify-content: start;
+    align-items: center;
+    width: 90%;
+    margin-bottom: 10px;
+}
+
+.d2 {
+    display: flex;
+    justify-content: start;
+    align-items: center;
+    width: 50%;
+    height: 40px;
+}
+
+select {
+    width: 90%;
+    height: 40px;
+}
+
+input {
+    width: 80%;
+    height: 30px;
+}
+
+#txt2 {
+    background-color: beige;
+}
+label {
+    font-size: x-large;
+    font-weight: bold;
+}

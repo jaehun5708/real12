@@ -1,102 +1,102 @@
 /* 전체 요소 모두 선택 */
 * {
-    margin: 0px;
-    padding: 0px; 
-  }
+  margin: 0px;
+  padding: 0px; 
+}
+
+body {
+  display: flex;
+  justify-content: center;
+  align-items: start;
+}
+
+main {
+  width: 60%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+
+header {
+  width: 100%;
+  height: 40px;
+  background-color: black;
+  color: white;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 20px; 
+}
+
+a {
+  text-decoration: none;
+  color: white;
+  display: inline-flex;
+  padding: 10px;
+  border-radius: 10px;
+}
+
+a:hover {
+  background-color: white;
+  color: black;
+}
+
+section, #divTitle, #divContent {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+section {
+  width: 100%; 
+  flex-direction: column;
+}
+
+#divTitle, #divContent, #msg {
+  border: 1px dotted gray;
+  width : 90%;
   
-  body {
-    display: flex;
-    justify-content: center;
-    align-items: start;
-  }
+  padding: 20px;
+}
+
+#divTitle {
+  background-color: aliceblue;
+  border: 1px dotted gray;
+  font-size: x-large;
+  font-weight: bold;
+  height: 60px;
+  margin: 20px;
+}
+
+#divContent {
+  flex-direction: column;
+  margin-top: 10px;
+}
+
+#divContent > p {
+  margin-bottom: 10px;
+}
+
+#msg { 
+  height: 60px;
+}
+
+button {
+  display: inline-flex ;
+  justify-content: center;
+  align-items: center;
   
-  main {
-    width: 60%;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    flex-direction: column;
-  }
-  
-  header {
-    width: 100%;
-    height: 40px;
-    background-color: black;
-    color: white;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 20px;
-  }
+  padding: 10px;
+  background-color: royalblue;
+  color: white;
 
-  a{
-    text-decoration: none;
-    color: white;
-    display: inline-flex;
-    padding: 10px;
-    border-radius: 10px;
-  }
+  font-size:medium;
+  font-weight: bold;
+  border-radius: 10px;
+  border: none;
+}
 
-  section, #divTitle, #divContent {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    flex-direction: column;
-  }
-  section {
-    width: 100%;
-    
-  }
-
-  a:hover{
-    background-color: white;
-    color: black;
-  }
-  #divTitle, #divContent, #msg {
-    border: 1px dotted gray;
-    width: 90%;
-    padding: 20px;
-  }
-
-  #divTitle {
-    background-color: aliceblue;
-    
-    font-size: x-large;
-    font-weight: bold;
-    margin: 20px;
-    height: 60px;
-    
-  }
-  
-  divContent {
-    flex-direction: column;
-    margin-top: 10px;
-    
-  }
-
-  #divContent > p{
-    margin-bottom: 10px;
-  }
-
-  #msg {
-    height:  60px;
-  }
-
-  button {
-    display: inline-flex ;
-    justify-content: center;
-    align-items: center;
-    
-    padding: 10px;
-    background-color: royalblue;
-    color: white;
-  
-    font-size:medium;
-    font-weight: bold;
-    border-radius: 10px;
-    border: none;
-  }
-  
-  button:hover {
-    background-color: coral;  
-  }
+button:hover {
+  background-color: coral;  
+}

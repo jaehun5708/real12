@@ -23,7 +23,7 @@ document.addEventListener('DOMContentLoaded', () => {
     //1. DOM 요소 가져오기
     const img = document.querySelector('img');  //태크셀렉터
     const txt1 = document.querySelector('input[type=number]');  //속성셀렉터
-    const bt = document.querySelector('#btok')  //아이디 셀렉터
+    const btok = document.querySelector('#btok')  //아이디 셀렉터
     const btcancel = document.querySelector('#btno')
 
     //랜덤수 생서 제어 변수

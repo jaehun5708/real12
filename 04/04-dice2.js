@@ -15,7 +15,7 @@ document.addEventListener('DOMContentLoaded', () => {
             const nCom = Math.floor(Math.random() * 6) + 1;
             // console.log(`${n}.png`);
             //user
-            const nUser = bt.textContent.charAt(0);
+            const nUser = parseInt(bt.textContent.charAt(0));
             console.log('nUser', nUser)
     
             //img src 속성을 변경

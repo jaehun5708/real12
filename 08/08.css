@@ -1,0 +1,27 @@
+#divContent > div {
+    width: 100%;
+    height: 40px;
+    padding: 10px;
+    margin: 10px;
+    /* background-color: beige; */
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    /* border: 1px solid gray; */
+}
+
+input[type=text] {
+    width: 90%;
+    height: 90%;
+}
+
+button {
+    width: 20%;
+    display: inline-flex;
+    margin: 5px;
+}
+
+#txt1 {
+    text-align: center;
+}

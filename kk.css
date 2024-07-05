@@ -1,0 +1,45 @@
+body {
+   width: 80%;
+   
+}
+
+ul {
+    
+    list-style: none;
+}
+#u1 > li {
+    display: inline-flex;
+    background-color: beige;
+    border-radius: 30%;
+    margin: 20px;
+    padding: 10px;
+}
+
+#u2 > li {
+    display: inline-flex;
+    background-color: bisque;
+    border-radius: 30%;
+    margin: 20px;
+    padding: 10px;
+}
+
+#u3 > li {
+    display: inline-flex;
+    background-color: burlywood;
+    border-radius: 30%;
+    margin: 20px;
+    padding: 10px;
+}
+
+#u4 > li {
+    display: inline-flex;
+    background-color: rgb(233, 219, 198);
+    border-radius: 30%;
+    margin: 20px;
+    padding: 10px;
+}
+
+h1 , h2 {
+    margin: 20px;
+
+}

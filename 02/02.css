@@ -97,8 +97,8 @@
   }
   
   
-  /* 미디어쿼리 */
-  @media screen and (min-width: 1280px) {
+  /* 미디어쿼리   min 뭐시기가 최소 저거 이상 느낌*/
+  @media screen and (min-width: 1280px) { 
     #content {
       width: 80%;
     }
@@ -108,3 +108,6 @@
       align-items: center;
     }
   }
+  /* 힘은 * > # > .  이 순서로 강함 */
+  /* display를 flex로 하면 가로로 기준이 생김
+  그래서 flex-direction을 columnn으로 해서 세로로 다시 기준 가능  */

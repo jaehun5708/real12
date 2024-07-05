@@ -1,3 +1,4 @@
+//함수 만들기
 const convert = (sel1, sel2, lb1, lb2) => {
     if (sel1.value === '℃') { //섭씨온도 -> 화씨온도
       sel2.value = '℉';
@@ -32,16 +33,17 @@ const convert = (sel1, sel2, lb1, lb2) => {
     //label
     const lb1 = document.querySelector('#lb1');
     const lb2 = document.querySelector('#lb2');
-  
+    
+    //입력만 했을때
     txt1.addEventListener('change', () => {
       txtConvert(txt1, lb1, txt2) ;
     }) ;
-  
+    //첫번째 선택을 하고 할때
     sel1.addEventListener('change', () => {  
       convert(sel1, sel2, lb1, lb2) ; 
       txtConvert(txt1, lb1, txt2) ;
     })
-  
+    //두번쨰거 선택하고 할때
     sel2.addEventListener('change', () => {  
       convert(sel2, sel1, lb2, lb1) ;
       txtConvert(txt1, lb1, txt2) ;

@@ -32,14 +32,14 @@ document.addEventListener('DOMContentLoaded', () => {
 
     //랜덤수
     let n = 0;
-    //확인버튼이 아닌 경우
+    //확인버튼이 아닌 경우 그림 다시 what으로 만들고 글자 바꾸기 flag 초기화
     const init = () => {
         img.setAttribute('src', './img/what.png');
         txt1.value = ' ';
         txt1.style.display = 'inline';  // none 안보임
         btok.textContent = '확인';
         btcancel.style.display = 'inline';
-        flag = false;
+        flag = true;
 
     }
 
@@ -47,23 +47,24 @@ document.addEventListener('DOMContentLoaded', () => {
     btok.addEventListener('click', () => {
         //form으로 묶었으면 e.preventDefault();
 
-
+        //이게 업다운 게임 맞추고 다시 시작하기 위해서
         if (btok.textContent != '확인') {
             init() ; //함수 호출
             return;
 
         }
+        //랜덤숫자생성
         if (flag == true) {
             n = Math.floor(Math.random() * 100) + 1;
             flag = false;
         }
-        //숫자 입력 확인
+        //숫자 입력 안하면 경고문 뜨게하기
         if (txt1.value == '') {
             alert('숫자를 입력하세요.');
-            txt1.focus();
+            txt1.focus(); //커서위치
             return;
         }
-        //비교
+        //비교하기 위해 컴퓨터가 생성한 숫자를 숫자 취급
         let usern = parseInt(txt1.value);
         if (n > usern) { // up
             img.setAttribute('src', './img/up.png');
@@ -77,6 +78,6 @@ document.addEventListener('DOMContentLoaded', () => {
             btok.textContent = '번호를 다시 생성하세요.'
             btcancel.style.display = 'none';
         }
-        console.log(n);
+        //console.log(n);
     });
 })

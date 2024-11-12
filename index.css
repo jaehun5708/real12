@@ -100,3 +100,7 @@ button {
 button:hover {
   background-color: coral;  
 }
+
+@tailwind base;
+@tailwind conponents;
+@tailwind utilites;

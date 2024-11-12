@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Air Quality Dashboard</title>
+    <link rel="stylesheet" href="styles.css">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+
+<body>
+    <!-- Header -->
+    <header>
+        <h1>Air Quality Monitoring Dashboard</h1>
+        <input type="text" placeholder="Search...">
+        <button>Generate Report</button>
+    </header>
+
+    <!-- Sidebar Navigation -->
+    <aside>
+        <div class="profile">
+            <p>Hi, User</p>
+            <p>xyz@gmail.com</p>
+        </div>
+        <nav>
+            <a href="#">Home</a>
+            <a href="#">Data</a>
+            <a href="#">About</a>
+        </nav>
+    </aside>
+
+    <!-- Main Dashboard Area -->
+    <main>
+        <!-- Dashboard Cards -->
+        <section class="dashboard-cards">
+            <div class="card">Temperature: <span>25°C</span></div>
+            <div class="card">Humidity: <span>45%</span></div>
+            <div class="card">PM2.5: <span>35 µg/m³</span></div>
+            <div class="card">CO2: <span>400 ppm</span></div>
+        </section>
+
+        <!-- Chart Section -->
+        <section class="charts">
+            <div class="chart-container">
+                <canvas id="lineChart"></canvas>
+            </div>
+            <div class="chart-container">
+                <canvas id="barChart"></canvas>
+            </div>
+            <div class="chart-container">
+                <canvas id="doughnutChart"></canvas>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer>
+        <p>&copy; 2024 Air Quality Monitoring Dashboard. All rights reserved.</p>
+    </footer>
+
+    <script src="scripts.js"></script>
+</body>
+
+</html>

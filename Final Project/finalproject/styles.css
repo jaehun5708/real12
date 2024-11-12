@@ -1,0 +1,89 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+}
+
+header {
+    background-color: #4e5df2;
+    color: white;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1em;
+}
+
+header input {
+    padding: 0.5em;
+    border-radius: 5px;
+    border: none;
+}
+
+aside {
+    background-color: #333;
+    color: white;
+    padding: 2em;
+    width: 200px;
+    position: fixed;
+    height: 100%;
+}
+
+aside .profile {
+    margin-bottom: 2em;
+}
+
+aside nav a {
+    display: block;
+    color: white;
+    margin: 1em 0;
+    text-decoration: none;
+}
+
+main {
+    margin-left: 220px;
+    padding: 2em;
+    flex: 1;
+}
+
+.dashboard-cards {
+    display: flex;
+    gap: 1em;
+    margin-bottom: 2em;
+}
+
+.card {
+    background-color: #6a75f2;
+    color: white;
+    padding: 1em;
+    border-radius: 10px;
+    flex: 1;
+    text-align: center;
+}
+
+.charts {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1em;
+}
+
+.chart-container {
+    width: 100%;
+    max-width: 400px;
+    padding: 1em;
+    background-color: #f3f3f3;
+    border-radius: 10px;
+}
+
+footer {
+    background-color: #4e5df2;
+    color: white;
+    text-align: center;
+    padding: 1em;
+}

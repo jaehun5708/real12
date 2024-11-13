@@ -32,6 +32,8 @@ aside {
     width: 200px;
     position: fixed;
     height: 100%;
+    top: 0;
+    left: 0;
 }
 
 aside .profile {
@@ -48,23 +50,35 @@ aside nav a {
 main {
     margin-left: 220px;
     padding: 2em;
+    margin-top: 60px;
+    /* 헤더에 가리지 않도록 상단 여백 추가 */
     flex: 1;
 }
 
 .dashboard-cards {
     display: grid;
-    grid-template-columns: 1fr; /* 한 열에 하나씩 */
-    gap: 1em;                   /* 카드 간 간격 */
+    grid-template-columns: 1fr;
+    /* 한 열에 하나씩 */
+    gap: 1em;
+    /* 카드 간 간격 */
     margin-bottom: 2em;
     padding: 10px;
 }
 
-#card1, #card2, #card3, #card4, #card5, #card6, #card7, #card8, #card9{
+#card1,
+#card2,
+#card3,
+#card4,
+#card5,
+#card6,
+#card7,
+#card8,
+#card9 {
     background-color: #6a75f2;
     color: white;
     padding: 1em;
+    margin: 20px;
     border-radius: 10px;
-    flex: 1;
     text-align: center;
 }
 
@@ -87,4 +101,17 @@ footer {
     color: white;
     text-align: center;
     padding: 1em;
+}
+
+/* #last가 화면 전체를 차지하게 설정 */
+#last {
+    display: block;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 1.5em;
+    background-color: #f0f0f0;
+    color: black;
+    text-align: center;
 }

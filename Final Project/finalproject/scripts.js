@@ -1,3 +1,13 @@
+
+function scrollToTopAndRefresh() {
+    // 화면을 최상단으로 부드럽게 스크롤
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+    
+    // 스크롤이 완료된 후 새로고침 (약간의 지연을 줍니다)
+    setTimeout(() => {
+        location.reload();
+    }, 500); // 0.5초 후 새로고침
+}
 // Line Chart for Temperature & Humidity
 const ctxLine = document.getElementById('lineChart').getContext('2d');
 const lineChart = new Chart(ctxLine, {

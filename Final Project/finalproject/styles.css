@@ -15,8 +15,7 @@ header {
     background-color: #4e5df2;
     color: white;
     display: flex;
-    justify-content: space-between;
-    align-items: center;
+    justify-content: center;
     padding: 1em;
 }
 
@@ -53,12 +52,14 @@ main {
 }
 
 .dashboard-cards {
-    display: flex;
-    gap: 1em;
+    display: grid;
+    grid-template-columns: 1fr; /* 한 열에 하나씩 */
+    gap: 1em;                   /* 카드 간 간격 */
     margin-bottom: 2em;
+    padding: 10px;
 }
 
-.card {
+#card1, #card2, #card3, #card4, #card5, #card6, #card7, #card8, #card9{
     background-color: #6a75f2;
     color: white;
     padding: 1em;

@@ -12,32 +12,74 @@
 <body>
     <!-- Header -->
     <header>
-        <h1>Air Quality Monitoring Dashboard</h1>
-        <input type="text" placeholder="Search...">
-        <button>Generate Report</button>
+        <h1>Today's Air Quality</h1>
     </header>
+
+    <div style="height: 100vh; color: black;">
+
+        <p>today</p>
+    </div>
 
     <!-- Sidebar Navigation -->
     <aside>
         <div class="profile">
-            <p>Hi, User</p>
-            <p>xyz@gmail.com</p>
+            <h2>MENU</h2>
         </div>
         <nav>
-            <a href="#">Home</a>
-            <a href="#">Data</a>
-            <a href="#">About</a>
+            <a href="#" onclick="location.reload(true); return false;">Home</a>
+ <!-- 맨 위로 보내기 -->
+            <a href="#card1"
+                onclick="document.getElementById('card1').scrollIntoView({ behavior: 'smooth' }); return false;">
+                Temperature
+            </a> 
+            <a href="#card2"
+                onclick="document.getElementById('card2').scrollIntoView({ behavior: 'smooth' }); return false;">
+                Humidity
+            </a>
+            <a href="#card3"
+                onclick="document.getElementById('card3').scrollIntoView({ behavior: 'smooth' }); return false;">
+                PM2.5</a>
+            <a href="#card4"
+                onclick="document.getElementById('card4').scrollIntoView({ behavior: 'smooth' }); return false;">
+                PM10
+            </a>
+            <a href="#card5"
+                onclick="document.getElementById('card5').scrollIntoView({ behavior: 'smooth' }); return false;">
+                NOx
+            </a>
+            <a href="#card6"
+                onclick="document.getElementById('card6').scrollIntoView({ behavior: 'smooth' }); return false;">
+                NH3
+            </a>
+            <a href="#card7"
+                onclick="document.getElementById('card7').scrollIntoView({ behavior: 'smooth' }); return false;">
+                CO2
+            </a>
+            <a href="#card8"
+                onclick="document.getElementById('card8').scrollIntoView({ behavior: 'smooth' }); return false;">
+                SO2
+            </a>
+            <a href="#card9"
+                onclick="document.getElementById('card9').scrollIntoView({ behavior: 'smooth' }); return false;">
+                VOC
+            </a>
         </nav>
     </aside>
 
     <!-- Main Dashboard Area -->
     <main>
+
         <!-- Dashboard Cards -->
         <section class="dashboard-cards">
-            <div class="card">Temperature: <span>25°C</span></div>
-            <div class="card">Humidity: <span>45%</span></div>
-            <div class="card">PM2.5: <span>35 µg/m³</span></div>
-            <div class="card">CO2: <span>400 ppm</span></div>
+            <button type="button" id="card1">Temperature: <span>25°C</span></button>
+            <button type="button" id="card2">Humidity: <span>45%</span></button>
+            <button type="button" id="card3">PM2.5: <span>35 µg/m³</span></button>
+            <button type="button" id="card4">PM10: <span>400 ppm</span></button>
+            <button type="button" id="card5">NOx: <span>25°C</span></button>
+            <button type="button" id="card6">NH3: <span>45%</span></button>
+            <button type="button" id="card7">CO2: <span>35 µg/m³</span></button>
+            <button type="button" id="card8">SO2: <span>400 ppm</span></button>
+            <button type="button" id="card9">VOC: <span>400 ppm</span></button>
         </section>
 
         <!-- Chart Section -->

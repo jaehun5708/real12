@@ -50,7 +50,8 @@
             <a href="#card8"
                 onclick="document.getElementById('card8').scrollIntoView({ behavior: 'smooth' }); return false;">SO2</a>
             <a href="#card9"
-                onclick="document.getElementById('card9').scrollIntoView({ behavior: 'smooth' }); return false;">비율</a>
+                onclick="document.getElementById('card9').scrollIntoView({ behavior: 'smooth' }); return false;">chart</a>
+            <button id="show-readme-btn">README</button>
         </nav>
     </aside>
 
@@ -59,7 +60,7 @@
         <!-- Dashboard Cards -->
         <section class="dashboard-cards">
             <button type="button" id="card1" onclick="toggleChart('chart1')">Temperature(°C)</button>
-            <div class="chart-wrapper">
+            <div class="chart-wrapper" id="chart1-wrapper">
                 <div class="chart-container" id="chart1">
                     <canvas id="temperatureChart"></canvas>
                     <button id="temperatureButton">Update</button>
@@ -67,7 +68,7 @@
             </div>
 
             <button type="button" id="card2" onclick="toggleChart('chart2')">Humidity(%)</button>
-            <div class="chart-wrapper">
+            <div class="chart-wrapper" id="chart2-wrapper">
                 <div class="chart-container" id="chart2">
                     <canvas id="humidityChart"></canvas>
                     <button id="humidityButton">Update</button>
@@ -106,7 +107,7 @@
                     <button id="no2Button">Update</button>
                 </div>
                 <div class="image-container" id="no2ImageContainer">
-                    <img id="no2Image" src="/공기 일러스트/soso.png" alt="no2 상태" width="150px" height="auto">
+                    <img id="no2Image" src="/공기 일러스트/bad.png" alt="no2 상태" width="150px" height="auto">
                 </div>
             </div>
 
@@ -118,7 +119,7 @@
                     <button id="nh3Button">Update</button>
                 </div>
                 <div class="image-container" id="nh3ImageContainer">
-                    <img id="nh3Image" src="/공기 일러스트/soso.png" alt="nh3 상태" width="150px" height="auto">
+                    <img id="nh3Image" src="/공기 일러스트/very bad.png" alt="nh3 상태" width="150px" height="auto">
                 </div>
             </div>
 
@@ -155,7 +156,7 @@
                 </div>
 
             </div>
-
+            <iframe id="readme-container" src=""></iframe>
         </section>
     </main>
 

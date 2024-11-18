@@ -358,3 +358,21 @@ function toggleChart(chartId) {
     }
 }
 
+ // 버튼과 iframe 요소 가져오기
+ const button = document.getElementById('show-readme-btn');
+ const readmeContainer = document.getElementById('readme-container');
+
+ // 버튼 클릭 이벤트
+ button.addEventListener('click', () => {
+   if (readmeContainer.style.display === 'none') {
+     // README를 표시하고 GitHub README 링크를 iframe에 추가
+     readmeContainer.src = 'https://github.com/사용자명/저장소명/blob/main/README.md';
+     readmeContainer.style.display = 'block';
+     button.textContent = 'README 닫기';
+   } else {
+     // README 숨기기
+     readmeContainer.style.display = 'none';
+     readmeContainer.src = '';
+     button.textContent = 'README 보기';
+   }
+ });

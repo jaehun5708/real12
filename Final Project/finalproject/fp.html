@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -14,7 +15,8 @@
         }
 
         /* #last가 화면 전체 높이를 차지하게 설정 */
-        #last, #start {
+        #last,
+        #start {
             display: block;
             height: 100vh;
             display: flex;
@@ -34,10 +36,12 @@
         <h1>Today's Air Quality</h1>
     </header>
 
-    <div id = "start" style="height: 100vh; background-color: white;">
+    <div id="start" style="height: 100vh; background-color: white;">
+        <img src="/공기 일러스트/좋은 공기.jpg" />
         <nav>
             <!-- 맨 위의 a 태그: 클릭 시 #last로 이동 -->
-            <a href="#last" onclick="document.getElementById('last').scrollIntoView({ behavior: 'smooth' }); return false;">Today</a>
+            <a href="#last"
+                onclick="document.getElementById('last').scrollIntoView({ behavior: 'smooth' }); return false;">Today</a>
         </nav>
     </div>
 
@@ -49,15 +53,24 @@
         <nav>
             <a href="#" onclick="scrollToTopAndRefresh(); return false;">home</a>
             <!-- Scroll Links -->
-            <a href="#card1" onclick="document.getElementById('card1').scrollIntoView({ behavior: 'smooth' }); return false;">Temperature</a>
-            <a href="#card2" onclick="document.getElementById('card2').scrollIntoView({ behavior: 'smooth' }); return false;">Humidity</a>
-            <a href="#card3" onclick="document.getElementById('card3').scrollIntoView({ behavior: 'smooth' }); return false;">PM2.5</a>
-            <a href="#card4" onclick="document.getElementById('card4').scrollIntoView({ behavior: 'smooth' }); return false;">PM10</a>
-            <a href="#card5" onclick="document.getElementById('card5').scrollIntoView({ behavior: 'smooth' }); return false;">NOx</a>
-            <a href="#card6" onclick="document.getElementById('card6').scrollIntoView({ behavior: 'smooth' }); return false;">NH3</a>
-            <a href="#card7" onclick="document.getElementById('card7').scrollIntoView({ behavior: 'smooth' }); return false;">CO2</a>
-            <a href="#card8" onclick="document.getElementById('card8').scrollIntoView({ behavior: 'smooth' }); return false;">SO2</a>
-            <a href="#card9" onclick="document.getElementById('card9').scrollIntoView({ behavior: 'smooth' }); return false;">VOC</a>
+            <a href="#card1"
+                onclick="document.getElementById('card1').scrollIntoView({ behavior: 'smooth' }); return false;">Temperature</a>
+            <a href="#card2"
+                onclick="document.getElementById('card2').scrollIntoView({ behavior: 'smooth' }); return false;">Humidity</a>
+            <a href="#card3"
+                onclick="document.getElementById('card3').scrollIntoView({ behavior: 'smooth' }); return false;">PM2.5</a>
+            <a href="#card4"
+                onclick="document.getElementById('card4').scrollIntoView({ behavior: 'smooth' }); return false;">PM10</a>
+            <a href="#card5"
+                onclick="document.getElementById('card5').scrollIntoView({ behavior: 'smooth' }); return false;">NOx</a>
+            <a href="#card6"
+                onclick="document.getElementById('card6').scrollIntoView({ behavior: 'smooth' }); return false;">NH3</a>
+            <a href="#card7"
+                onclick="document.getElementById('card7').scrollIntoView({ behavior: 'smooth' }); return false;">CO2</a>
+            <a href="#card8"
+                onclick="document.getElementById('card8').scrollIntoView({ behavior: 'smooth' }); return false;">SO2</a>
+            <a href="#card9"
+                onclick="document.getElementById('card9').scrollIntoView({ behavior: 'smooth' }); return false;">VOC</a>
         </nav>
     </aside>
 
@@ -68,44 +81,60 @@
             <button type="button" id="card1" onclick="toggleChart('chart1')">Temperature: <span>25°C</span></button>
             <div class="chart-container" id="chart1">
                 <canvas id="tempChart"></canvas>
+                <button type="button" id="patch1">patch</button>
+                <!-- 이거 누르면 새로고침 -->
             </div>
             <button type="button" id="card2" onclick="toggleChart('chart2')">Humidity: <span>45%</span></button>
             <div class="chart-container" id="chart2">
                 <canvas id="humidityChart"></canvas>
+                <button type="button" id="patch2">patch</button>
             </div>
             <button type="button" id="card3" onclick="toggleChart('chart3')">PM2.5: <span>35 µg/m³</span></button>
             <div class="chart-container" id="chart3">
                 <canvas id="pm25Chart"></canvas>
+                <button type="button" id="patch3">patch</button>
             </div>
             <button type="button" id="card4" onclick="toggleChart('chart4')">PM10: <span>400 ppm</span></button>
             <div class="chart-container" id="chart4">
                 <canvas id="pm10Chart"></canvas>
+                <button type="button" id="patch4">patch</button>
             </div>
             <button type="button" id="card5" onclick="toggleChart('chart5')">NOx: <span>25°C</span></button>
             <div class="chart-container" id="chart5">
                 <canvas id="noxChart"></canvas>
+                <button type="button" id="patch5">patch</button>
             </div>
             <button type="button" id="card6" onclick="toggleChart('chart6')">NH3: <span>45%</span></button>
             <div class="chart-container" id="chart6">
                 <canvas id="nh3Chart"></canvas>
+                <button type="button" id="patch6">patch</button>
             </div>
             <button type="button" id="card7" onclick="toggleChart('chart7')">CO2: <span>35 µg/m³</span></button>
             <div class="chart-container" id="chart7">
                 <canvas id="co2Chart"></canvas>
+                <button type="button" id="patch7">patch</button>
             </div>
             <button type="button" id="card8" onclick="toggleChart('chart8')">SO2: <span>400 ppm</span></button>
             <div class="chart-container" id="chart8">
                 <canvas id="so2Chart"></canvas>
+                <button type="button" id="patch8">patch</button>
             </div>
             <button type="button" id="card9" onclick="toggleChart('chart9')">VOC: <span>400 ppm</span></button>
             <div class="chart-container" id="chart9">
                 <canvas id="vocChart"></canvas>
+                <button type="button" id="patch9">patch</button>
             </div>
         </section>
     </main>
 
     <!-- 요약 섹션 -->
-    <p id="last" style="background-color: white;">요약</p>
+
+    <div id="last"
+        style="background-color: white; display: flex; flex-direction: column; align-items: center; justify-content: center;">
+        <img src="/공기 일러스트/nice.png" />
+        <p>NICE~~</p>
+    </div>
+
 
     <!-- Footer -->
     <footer>
@@ -121,4 +150,5 @@
         }
     </script>
 </body>
+
 </html>

@@ -2,6 +2,7 @@
     margin: 0;
     padding: 0;
     box-sizing: border-box;
+    font-family: 'Times New Roman', serif;
 }
 
 body {
@@ -52,7 +53,6 @@ main {
     margin-left: 220px;
     padding: 2em;
     margin-top: 60px;
-    /* 헤더에 가리지 않도록 상단 여백 추가 */
     flex: 1;
 
 }
@@ -60,9 +60,7 @@ main {
 .dashboard-cards {
     display: grid;
     grid-template-columns: 1fr;
-    /* 한 열에 하나씩 */
     gap: 1em;
-    /* 카드 간 간격 */
     margin-bottom: 2em;
     padding: 10px;
 }
@@ -97,7 +95,6 @@ main {
     background-color: #f3f3f3;
     border-radius: 10px;
     display: none;
-    /* 기본적으로 차트를 숨김 */
     margin-top: 1em;
 }
 
@@ -136,14 +133,14 @@ footer {
 
 @media (min-width: 768px) {
     .chart-wrapper {
-        display: none; /* 화면이 클 때 요소를 숨김 */
+        display: none; /* Hide elements when the screen is large */
         flex-direction: row;
     }
 }
 
 @media (max-width: 767px) {
     .chart-wrapper {
-        display: flex; /* 화면이 작을 때 요소를 표시 */
+        display: flex; /* Display elements when the screen is small */
         flex-direction: column;
     }
 }
@@ -163,13 +160,58 @@ footer {
 }
 
 .chart-wrapper .chart-container button {
-    /* 원하는 스타일 속성들을 여기에 추가하세요 */
-    background-color: #4CAF50; /* 배경색 */
-    color: white; /* 글자색 */
-    padding: 10px 20px; /* 패딩 */
-    border: none; /* 테두리 제거 */
-    border-radius: 5px; /* 모서리 둥글게 */
-    cursor: pointer; /* 커서 모양 변경 */
-    font-size: 16px; /* 글꼴 크기 */
-    margin-top: 10px; /* 위쪽 여백 */
+    background-color: #4CAF50; 
+    color: white; 
+    padding: 10px 20px;  
+    border: none;  
+    border-radius: 5px;  
+    cursor: pointer;  
+    font-size: 16px;  
+    margin-top: 10px;  
+}
+
+#hidden-content {
+    display: none; /* Hidden state at first */
+    padding: 10px;
+    margin-top: 20px;
+    border: 1px solid #ccc;
+    background-color: #f9f9f9; 
+  }
+
+  #hidden-content h2 {
+    color: #007BFF; 
+    font-size: 1.8rem;
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+#hidden-content h3 {
+    font-size: 1.4rem;
+    color: #444;
+    margin-top: 20px;
+    margin-bottom: 10px;
+}
+
+#hidden-content p {
+    line-height: 1.8;
+    font-size: 1rem;
+    margin-bottom: 10px;
+}
+
+#hidden-content strong {
+    color: #007BFF;  
+    font-weight: bold;
+}
+
+ 
+.indicator-list {
+    margin-top: 10px;
+    padding: 10px 20px;
+    border-left: 4px solid #007BFF;  
+    background-color: #eef7ff;  
+    border-radius: 5px;
+}
+
+.indicator-list p {
+    margin-bottom: 10px;
 }

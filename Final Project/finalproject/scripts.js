@@ -1,30 +1,30 @@
 
 function scrollToTopAndRefresh() {
-    // 화면을 최상단으로 부드럽게 스크롤
+    //Slightly scroll the screen to the top 
     window.scrollTo({ top: 0, behavior: 'smooth' });
 
-    // 스크롤이 완료된 후 새로고침 (약간의 지연을 줍니다)
+    // Refresh after scrolling is complete (slightly delayed)
     setTimeout(() => {
         location.reload();
-    }, 500); // 0.5초 후 새로고침
+    }, 500); 
 }
 
 const API_KEY = '2770bf9f4ae275eb3a1da57d56b1ae0a';
-const lat = 35.2429; // 부산 금정구 위도
-const lon = 129.0929; // 부산 금정구 경도
+const lat = 35.2429; 
+const lon = 129.0929; 
 const url = `http://api.openweathermap.org/data/2.5/air_pollution?lat=${lat}&lon=${lon}&appid=${API_KEY}`;
 
-// Chart.js 초기화 함수 (막대 차트)
+// Chart.js initialization function (bar chart)
 function createBarChart(canvasId, label) {
     const ctx = document.getElementById(canvasId).getContext('2d');
     return new Chart(ctx, {
         type: 'bar',
         data: {
-            labels: [], // X축 데이터 (시간)
+            labels: [], // X-axis data (hours)
             datasets: [
                 {
                     label: label,
-                    data: [], // Y축 데이터
+                    data: [], // Y-axis data
                     backgroundColor: 'rgba(75, 192, 192, 0.5)',
                     borderColor: 'rgba(75, 192, 192, 1)',
                     borderWidth: 1
@@ -52,7 +52,7 @@ function createBarChart(canvasId, label) {
     });
 }
 
-// 개별 차트 생성 (막대 차트)
+// Create individual charts (bar charts)
 const pm25Chart = createBarChart('pm25Chart', 'PM2.5');
 const pm10Chart = createBarChart('pm10Chart', 'PM10');
 const coChart = createBarChart('coChart', 'CO');
@@ -60,7 +60,7 @@ const no2Chart = createBarChart('no2Chart', 'NO2');
 const so2Chart = createBarChart('so2Chart', 'SO2');
 const nh3Chart = createBarChart('nh3Chart', 'NH3');
 
-// 데이터 가져오기 및 특정 차트 업데이트 함수
+// Data import and specific chart update functions
 async function fetchAndUpdateChart(chart, dataKey) {
     try {
         const response = await fetch(url);
@@ -70,9 +70,9 @@ async function fetchAndUpdateChart(chart, dataKey) {
         const data = await response.json();
         const components = data.list[0].components;
         const value = components[dataKey];
-        const currentTime = new Date().toLocaleTimeString(); // 현재 시각
+        const currentTime = new Date().toLocaleTimeString(); // Current time
 
-        // 그래프 업데이트
+        // Update Graphs
         chart.data.labels.push(currentTime);
         chart.data.datasets[0].data.push(value);
         chart.update();
@@ -90,7 +90,7 @@ const thresholds = {
     so2: { good: 20, moderate: 250, unhealthy: 350 }
 };
 
-// 상태 평가 함수
+// Status Evaluation Function
 function evaluateStatus(value, thresholds) {
     if (value <= thresholds.good) return 'good';
     if (value <= thresholds.moderate) return 'moderate';
@@ -98,7 +98,7 @@ function evaluateStatus(value, thresholds) {
     return 'very-unhealthy';
 }
 
-// 상태에 따른 이미지 업데이트 함수
+// Image update function based on status
 function updateImage(dataKey, value) {
     const imageElement = document.getElementById(`${dataKey}Image`);
     const status = evaluateStatus(value, thresholds[dataKey]);
@@ -113,7 +113,7 @@ function updateImage(dataKey, value) {
     imageElement.src = imageMap[status];
 }
 
-// 데이터 가져오기 및 상태 업데이트 함수
+// Data import and status update function
 async function fetchAndUpdateImage(dataKey) {
     try {
         const response = await fetch(url);
@@ -128,7 +128,7 @@ async function fetchAndUpdateImage(dataKey) {
     }
 }
 
-// 버튼 클릭 이벤트 각각 설정
+// Set each button click event
 document.getElementById('pm25Button').addEventListener('click', () => fetchAndUpdateChart(pm25Chart, 'pm2_5'));
 document.getElementById('pm10Button').addEventListener('click', () => fetchAndUpdateChart(pm10Chart, 'pm10'));
 document.getElementById('coButton').addEventListener('click', () => fetchAndUpdateChart(coChart, 'co'));
@@ -136,7 +136,6 @@ document.getElementById('no2Button').addEventListener('click', () => fetchAndUpd
 document.getElementById('so2Button').addEventListener('click', () => fetchAndUpdateChart(so2Chart, 'so2'));
 document.getElementById('nh3Button').addEventListener('click', () => fetchAndUpdateChart(nh3Chart, 'nh3'));
 
-// 버튼 클릭 이벤트 설정
 document.getElementById('pm25Button').addEventListener('click', () => fetchAndUpdateImage('pm2_5'));
 document.getElementById('pm10Button').addEventListener('click', () => fetchAndUpdateImage('pm10'));
 document.getElementById('no2Button').addEventListener('click', () => fetchAndUpdateImage('no2'));
@@ -167,7 +166,7 @@ const aqiMap = {
     }
 };
 
-// AQI 값에 따라 이미지와 텍스트 업데이트
+// Update images and text according to AQI values
 function updateAQI(aqiValue) {
     const lastDiv = document.getElementById('last');
     const image = lastDiv.querySelector('img');
@@ -181,7 +180,7 @@ function updateAQI(aqiValue) {
     }
 }
 
-// 데이터 가져오기 및 업데이트
+// Importing and updating data
 async function fetchAndUpdateAQI() {
     try {
         const response = await fetch(url);
@@ -189,34 +188,34 @@ async function fetchAndUpdateAQI() {
             throw new Error('Failed to fetch AQI data');
         }
         const data = await response.json();
-        const aqiValue = data.list[0].main.aqi; // AQI 값 가져오기
+        const aqiValue = data.list[0].main.aqi; // Get AQI value
 
-        // AQI 업데이트
+        
         updateAQI(aqiValue);
     } catch (error) {
         console.error('Error fetching AQI data:', error);
     }
 }
 
-// 페이지 로드 시 AQI 데이터 가져오기
+// Import AQI data at page loading
 document.addEventListener('DOMContentLoaded', fetchAndUpdateAQI);
 
 const API_KEY2 = '2770bf9f4ae275eb3a1da57d56b1ae0a';
-const lat2 = 35.2429; // 부산 금정구 위도
-const lon2 = 129.0929; // 부산 금정구 경도
+const lat2 = 35.2429; 
+const lon2 = 129.0929; 
 const url2 = `https://api.openweathermap.org/data/2.5/weather?lat=${lat2}&lon=${lon2}&appid=${API_KEY2}&units=metric`;
 
-// Chart.js 초기화 함수 (꺾은선 그래프)
+// Chart.js initialization function (bending line graph)
 function createLineChart(canvasId, label) {
     const ctx = document.getElementById(canvasId).getContext('2d');
     return new Chart(ctx, {
         type: 'line',
         data: {
-            labels: [], // X축 데이터 (시간)
+            labels: [], // X-axis data (hours)
             datasets: [
                 {
                     label: label,
-                    data: [], // Y축 데이터
+                    data: [], // Y-axis data
                     borderColor: 'rgba(75, 192, 192, 1)',
                     borderWidth: 2,
                     fill: false
@@ -244,11 +243,11 @@ function createLineChart(canvasId, label) {
     });
 }
 
-// 개별 차트 생성 (꺾은선 그래프)
+// Create an individual chart (bending line graph)
 const temperatureChart = createLineChart('temperatureChart', 'Temperature (°C)');
 const humidityChart = createLineChart('humidityChart', 'Humidity (%)');
 
-// 데이터 가져오기 및 특정 차트 업데이트 함수
+// Data import and specific chart update functions
 async function fetchAndUpdateWeather(chart, dataKey, label) {
     try {
         const response = await fetch(url2);
@@ -256,10 +255,9 @@ async function fetchAndUpdateWeather(chart, dataKey, label) {
             throw new Error('Failed to fetch data');
         }
         const data = await response.json();
-        const value = data.main[dataKey]; // 온도 또는 습도 값
-        const currentTime = new Date().toLocaleTimeString(); // 현재 시각
+        const value = data.main[dataKey]; 
+        const currentTime = new Date().toLocaleTimeString(); 
 
-        // 그래프 업데이트
         chart.data.labels.push(currentTime);
         chart.data.datasets[0].data.push(value);
         chart.update();
@@ -268,7 +266,7 @@ async function fetchAndUpdateWeather(chart, dataKey, label) {
     }
 }
 
-// 버튼 클릭 이벤트 각각 설정
+// Set each button click event
 document.getElementById('temperatureButton').addEventListener('click', () => fetchAndUpdateWeather(temperatureChart, 'temp', 'Temperature (°C)'));
 document.getElementById('humidityButton').addEventListener('click', () => fetchAndUpdateWeather(humidityChart, 'humidity', 'Humidity (%)'));
 
@@ -279,7 +277,7 @@ const airQualityChart = new Chart(ctx, {
         labels: ['PM2.5', 'PM10', 'NO2', 'NH3', 'CO', 'SO2'],
         datasets: [{
             label: 'Air Quality Components',
-            data: [0, 0, 0, 0, 0, 0], // 초기 데이터 값
+            data: [0, 0, 0, 0, 0, 0], // Initial Data Values
             backgroundColor: [
                 'rgba(75, 192, 192, 0.5)',
                 'rgba(255, 99, 132, 0.5)',
@@ -317,7 +315,7 @@ const airQualityChart = new Chart(ctx, {
     }
 });
 
-// 데이터 업데이트 함수
+// update
 async function updateAirQualityChart() {
     try {
         const response = await fetch(url);
@@ -327,7 +325,7 @@ async function updateAirQualityChart() {
         const data = await response.json();
         const components = data.list[0].components;
 
-        // 데이터를 업데이트
+        // update the data
         airQualityChart.data.datasets[0].data = [
             components.pm2_5,
             components.pm10,
@@ -337,14 +335,14 @@ async function updateAirQualityChart() {
             components.so2
         ];
 
-        // 차트 업데이트
+        // update the chart
         airQualityChart.update();
     } catch (error) {
         console.error('Error updating chart:', error);
     }
 }
 
-// 버튼 클릭 이벤트
+// click
 document.getElementById('updateChartButton').addEventListener('click', updateAirQualityChart);
 
 function toggleChart(chartId) {
@@ -358,21 +356,13 @@ function toggleChart(chartId) {
     }
 }
 
- // 버튼과 iframe 요소 가져오기
- const button = document.getElementById('show-readme-btn');
- const readmeContainer = document.getElementById('readme-container');
-
- // 버튼 클릭 이벤트
- button.addEventListener('click', () => {
-   if (readmeContainer.style.display === 'none') {
-     // README를 표시하고 GitHub README 링크를 iframe에 추가
-     readmeContainer.src = 'https://github.com/사용자명/저장소명/blob/main/README.md';
-     readmeContainer.style.display = 'block';
-     button.textContent = 'README 닫기';
-   } else {
-     // README 숨기기
-     readmeContainer.style.display = 'none';
-     readmeContainer.src = '';
-     button.textContent = 'README 보기';
-   }
- });
+document.getElementById('show-content').addEventListener('click', function () {
+    const hiddenContent = document.getElementById('hidden-content');
+    if (hiddenContent.style.display === 'none' || hiddenContent.style.display === '') {
+      hiddenContent.style.display = 'block'; // Show the contents
+      this.textContent = "닫기"; // Change link text
+    } else {
+      hiddenContent.style.display = 'none'; // Hide Content
+      this.textContent = "README"; // Return to original text
+    }
+  });

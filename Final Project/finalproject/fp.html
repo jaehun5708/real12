@@ -13,26 +13,23 @@
 </head>
 
 <body>
-    <!-- Header -->
     <header>
         <h1>Today's Air Quality</h1>
     </header>
-
+<!-- Go to Summary -->
     <div id="start" style="height: 100vh; background-color: white;">
         <img src="/공기 일러스트/좋은 공기.jpg" style="height: 90%; width: 50%; cursor: pointer; margin-left: 50px;"
             onclick="document.getElementById('last').scrollIntoView({ behavior: 'smooth' });" />
     </div>
 
-
-
-    <!-- Sidebar Navigation -->
     <aside>
         <div class="profile">
             <h2>MENU</h2>
         </div>
         <nav>
+            <!-- Send a refresh and screen to the top -->
             <a href="#" onclick="scrollToTopAndRefresh(); return false;">home</a>
-            <!-- Scroll Links -->
+            <!-- Move to id -->
             <a href="#card1"
                 onclick="document.getElementById('card1').scrollIntoView({ behavior: 'smooth' }); return false;">Temperature</a>
             <a href="#card2"
@@ -51,13 +48,13 @@
                 onclick="document.getElementById('card8').scrollIntoView({ behavior: 'smooth' }); return false;">SO2</a>
             <a href="#card9"
                 onclick="document.getElementById('card9').scrollIntoView({ behavior: 'smooth' }); return false;">chart</a>
-            <button id="show-readme-btn">README</button>
+            <a id="show-content" href="#hidden-content"
+                onclick="document.getElementById('hidden-content').scrollIntoView({ behavior: 'smooth' }); return false;">README</a>
         </nav>
     </aside>
 
-    <!-- Main Dashboard Area -->
     <main>
-        <!-- Dashboard Cards -->
+        <!-- Click to display the screen and press the button to graph the value according to the current time and to produce the appropriate image -->
         <section class="dashboard-cards">
             <button type="button" id="card1" onclick="toggleChart('chart1')">Temperature(°C)</button>
             <div class="chart-wrapper" id="chart1-wrapper">
@@ -147,7 +144,7 @@
                 </div>
             </div>
 
-            <button type="button" id="card9" onclick="toggleChart('chart9')">비율</button>
+            <button type="button" id="card9" onclick="toggleChart('chart9')">CHART</button>
             <div class="chart-wrapper" id="chart9-wrapper">
                 <div class="chart-container" id="chart9">
                     <h1>Air Quality Doughnut Chart</h1>
@@ -156,11 +153,42 @@
                 </div>
 
             </div>
-            <iframe id="readme-container" src=""></iframe>
+            <!-- When you click the button, hidden content comes out and the screen moves -->
+            <div id="hidden-content">
+                <h2>Air Quality Dashboard Information</h2>
+                <h3>Purpose</h3>
+                <p>
+                    This dashboard is designed to help users monitor real-time air quality conditions and gain a clear
+                    understanding of air quality indicators.
+                    By visually presenting data, it makes it easier to comprehend information related to air pollution.
+                </p>
+            
+                <h3>Key Air Quality Indicators</h3>
+                <div class="indicator-list">
+                    <p>
+                        <strong>PM2.5:</strong> Fine particulate matter that can have severe health impacts due to its
+                        small size.
+                    </p>
+                    <p>
+                        <strong>PM10:</strong> Particulate matter associated with respiratory diseases.
+                    </p>
+                    <p>
+                        <strong>NO2 (Nitrogen Dioxide):</strong> A major pollutant generated from traffic and industrial
+                        activities.
+                    </p>
+                    <p>
+                        <strong>CO (Carbon Monoxide):</strong> A dangerous gas that can cause oxygen deficiency.
+                    </p>
+                    <p>
+                        <strong>SO2 (Sulfur Dioxide):</strong> A key pollutant resulting from the combustion of fossil
+                        fuels.
+                    </p>
+                </div>
+            </div>
         </section>
     </main>
 
-    <!-- 요약 섹션 -->
+    <!-- Images and words are currently available for air quality -->
     <div id="last"
         style="background-color: white; display: flex; flex-direction: column; align-items: center; justify-content: center;">
         <img src="/공기 일러스트/red.png" style="height: 50%; width: 50%; margin-left: 80px;" />
@@ -170,11 +198,11 @@
 
 
 
-    <!-- Footer -->
+    <!-- indicating sources -->
     <footer style="display: flex; justify-content: space-around; align-items: center;">
         <a href="https://openweathermap.org/api/air-pollution" target="_blank">weathermap</a>
-        <a href="https://www.w3schools.com/" target="_blank">W3SCHOOL</a>
-        <a href="https://www.chatgpt.com" target="_blank">Chat gpt</a>
+        <a href="https://www.w3schools.com/" target="_blank">w3school</a>
+        <a href="https://github.com/jaehun5708/real12" target="_blank">github</a>
     </footer>
 
     <script src="scripts.js"></script>

@@ -16,7 +16,7 @@
     <header>
         <h1>Today's Air Quality</h1>
     </header>
-<!-- Go to Summary -->
+    <!-- Go to Summary -->
     <div id="start" style="height: 100vh; background-color: white;">
         <img src="/공기 일러스트/좋은 공기.jpg" style="height: 90%; width: 50%; cursor: pointer; margin-left: 50px;"
             onclick="document.getElementById('last').scrollIntoView({ behavior: 'smooth' });" />
@@ -56,13 +56,15 @@
     <main>
         <!-- Click to display the screen and press the button to graph the value according to the current time and to produce the appropriate image -->
         <section class="dashboard-cards">
-            <button type="button" id="card1" onclick="toggleChart('chart1')">Temperature(°C)</button>
+            <button type="button" id="card1" onclick="toggleChart('chart1')">Temperature(°C) <span
+                    id="temperatureValue">Loading...</span></button>
             <div class="chart-wrapper" id="chart1-wrapper">
                 <div class="chart-container" id="chart1">
                     <canvas id="temperatureChart"></canvas>
                     <button id="temperatureButton">Update</button>
                 </div>
             </div>
+            
 
             <button type="button" id="card2" onclick="toggleChart('chart2')">Humidity(%)</button>
             <div class="chart-wrapper" id="chart2-wrapper">
@@ -162,7 +164,7 @@
                     understanding of air quality indicators.
                     By visually presenting data, it makes it easier to comprehend information related to air pollution.
                 </p>
-            
+
                 <h3>Key Air Quality Indicators</h3>
                 <div class="indicator-list">
                     <p>
@@ -192,7 +194,7 @@
     <div id="last"
         style="background-color: white; display: flex; flex-direction: column; align-items: center; justify-content: center;">
         <img src="/공기 일러스트/red.png" style="height: 50%; width: 50%; margin-left: 80px;" />
-        <p style="margin-left: 50px;">Fetching air quality data...</p>
+        <h3 style="margin-left: 100px;">Fetching air quality data...</h3>
     </div>
 
 

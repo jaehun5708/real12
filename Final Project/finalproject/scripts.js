@@ -170,7 +170,7 @@ const aqiMap = {
 function updateAQI(aqiValue) {
     const lastDiv = document.getElementById('last');
     const image = lastDiv.querySelector('img');
-    const text = lastDiv.querySelector('p');
+    const text = lastDiv.querySelector('h3');
 
     if (aqiMap[aqiValue]) {
         image.src = aqiMap[aqiValue].image;

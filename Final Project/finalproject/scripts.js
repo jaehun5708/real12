@@ -145,23 +145,23 @@ document.getElementById('so2Button').addEventListener('click', () => fetchAndUpd
 
 const aqiMap = {
     1: {
-        image: "/공기 일러스트/nice.png",
+        image: "/finalproject/공기 일러스트/nice.png",
         text: "The air quality is good today"
     },
     2: {
-        image: "/공기 일러스트/nice.png",
+        image: "/finalproject/공기 일러스트/nice.png",
         text: "The air quality is fair today"
     },
     3: {
-        image: "/공기 일러스트/yellow.png",
+        image: "/finalproject/공기 일러스트/yellow.png",
         text: "The air quality is moderate"
     },
     4: {
-        image: "/공기 일러스트/red.png",
+        image: "/finalproject/공기 일러스트/red.png",
         text: "The air quality is poor"
     },
     5: {
-        image: "/공기 일러스트/red.png",
+        image: "/finalproject/공기 일러스트/red.png",
         text: "The air quality is very poor"
     }
 };

@@ -18,7 +18,7 @@
     </header>
     <!-- Go to Summary -->
     <div id="start" style="height: 100vh; background-color: white;">
-        <img src="/finalproject/공기 일러스트/좋은 공기.jpg" style="height: 90%; width: 50%; cursor: pointer; margin-left: 50px;"
+        <img src="/좋은 공기.jpg" style="height: 90%; width: 50%; cursor: pointer; margin-left: 50px;"
             onclick="document.getElementById('last').scrollIntoView({ behavior: 'smooth' });" />
     </div>
 
@@ -30,6 +30,8 @@
             <!-- Send a refresh and screen to the top -->
             <a href="#" onclick="scrollToTopAndRefresh(); return false;">home</a>
             <!-- Move to id -->
+            <a href="#card0"
+            onclick="document.getElementById('card0').scrollIntoView({ behavior: 'smooth' }); return false;">cards</a>
             <a href="#card1"
                 onclick="document.getElementById('card1').scrollIntoView({ behavior: 'smooth' }); return false;">Temperature</a>
             <a href="#card2"
@@ -56,8 +58,21 @@
     <main>
         <!-- Click to display the screen and press the button to graph the value according to the current time and to produce the appropriate image -->
         <section class="dashboard-cards">
-            <button type="button" id="card1" onclick="toggleChart('chart1')">Temperature(°C) <span
-                    id="temperatureValue">Loading...</span></button>
+
+            <div id="card0">
+                <div class="card-container">
+                    <div class="card" id="c1">Temperature : </div>
+                    <div class="card" id="c2">Humidity : </div>
+                    <div class="card" id="c3">PM2.5 : </div>
+                    <div class="card" id="c4">PM10 : </div>
+                    <div class="card" id="c5">NO2 : </div>
+                    <div class="card" id="c6">NH3 : </div>
+                    <div class="card" id="c7">CO : </div>
+                    <div class="card" id="c8">SO2 : </div>
+                </div>
+            </div>
+            
+            <button type="button" id="card1" onclick="toggleChart('chart1')">Temperature(°C)</button>
             <div class="chart-wrapper" id="chart1-wrapper">
                 <div class="chart-container" id="chart1">
                     <canvas id="temperatureChart"></canvas>

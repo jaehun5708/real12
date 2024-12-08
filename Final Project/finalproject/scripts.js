@@ -104,10 +104,10 @@ function updateImage(dataKey, value) {
     const status = evaluateStatus(value, thresholds[dataKey]);
 
     const imageMap = {
-        good: "/공기 일러스트/good.png",
-        moderate: "/공기 일러스트/soso.png",
-        unhealthy: "/공기 일러스트/bad.png",
-        "very-unhealthy": "/공기 일러스트/very bad.png"
+        good: "/finalproject/공기 일러스트/good.png",
+        moderate: "/finalproject/공기 일러스트/soso.png",
+        unhealthy: "/finalproject/공기 일러스트/bad.png",
+        "very-unhealthy": "/finalproject/공기 일러스트/very bad.png"
     };
 
     imageElement.src = imageMap[status];
@@ -366,3 +366,27 @@ document.getElementById('show-content').addEventListener('click', function () {
       this.textContent = "README"; // Return to original text
     }
   });
+
+
+  async function updateCardsWithData() {
+    try {
+        const response = await fetch(url);
+        if (!response.ok) {
+            throw new Error('Failed to fetch data');
+        }
+        const data = await response.json();
+        const components = data.list[0].components;
+
+        // 각 카드에 데이터 할당
+        document.getElementById('c1').textContent = `Temperature : ${components.temp} °C`;
+        document.getElementById('c2').textContent = `Humidity : ${components.humidity} %`;
+        document.getElementById('c3').textContent = `PM2.5 : ${components.pm2_5} µg/m³`;
+        document.getElementById('c4').textContent = `PM10 : ${components.pm10} µg/m³`;
+        document.getElementById('c5').textContent = `NO2 : ${components.no2} µg/m³`;
+        document.getElementById('c6').textContent = `NH3 : ${components.nh3} µg/m³`;
+        document.getElementById('c7').textContent = `CO : ${components.co} mg/m³`;
+        document.getElementById('c8').textContent = `SO2 : ${components.so2} µg/m³`;
+    } catch (error) {
+        console.error('Error fetching data:', error);
+    }
+}

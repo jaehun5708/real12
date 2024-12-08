@@ -215,3 +215,27 @@ footer {
 .indicator-list p {
     margin-bottom: 10px;
 }
+
+.card-container {
+    display: flex;
+    flex-wrap: wrap;
+    padding: 20px;
+    justify-content: space-around; /* This will space the cards evenly */
+}
+
+.card {
+    background-color: #f3f3f3;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    padding: 20px;
+    margin: 10px;
+    width: calc(25% - 20px); /* Subtract the margin from the width for proper spacing */
+    text-align: center;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+}
+
+@media (max-width: 800px) {
+    .card {
+        width: calc(50% - 20px); /* On smaller screens, switch to 2 columns */
+    }
+}

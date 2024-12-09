@@ -410,7 +410,7 @@ async function updateTemperatureAndHumidity() {
     }
 }
 
-// 이 함수를 페이지 로딩 시점에 호출하여 온도와 습도 정보를 자동으로 업데이트
+// update
 document.addEventListener('DOMContentLoaded', () => {
     updateTemperatureAndHumidity();  // temp and hum update
     updateCardsWithData();           // data update
@@ -526,7 +526,7 @@ function fetchDataAndUpdateCharts() {
             }
             // Extract only the most recent 9 data entries
             const sliceIndex = Math.max(data.list.length - 9, 0);
-            temperatures = data.list.slice(sliceIndex).map(entry => entry.main.temp - 273.15); // 켈빈을 섭씨로 변환
+            temperatures = data.list.slice(sliceIndex).map(entry => entry.main.temp - 273.15); 
             humidities = data.list.slice(sliceIndex).map(entry => entry.main.humidity);
             timeLabels = data.list.slice(sliceIndex).map(entry => new Date(entry.dt * 1000).toLocaleTimeString());
 

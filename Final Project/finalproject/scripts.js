@@ -6,12 +6,12 @@ function scrollToTopAndRefresh() {
     // Refresh after scrolling is complete (slightly delayed)
     setTimeout(() => {
         location.reload();
-    }, 500); 
+    }, 500);
 }
 
 const API_KEY = '2770bf9f4ae275eb3a1da57d56b1ae0a';
-const lat = 35.2429; 
-const lon = 129.0929; 
+const lat = 35.2429;
+const lon = 129.0929;
 const url = `http://api.openweathermap.org/data/2.5/air_pollution?lat=${lat}&lon=${lon}&appid=${API_KEY}`;
 
 // Chart.js initialization function (bar chart)
@@ -43,7 +43,7 @@ function createBarChart(canvasId, label) {
                 y: {
                     title: {
                         display: true,
-                        
+
                     },
                     beginAtZero: true
                 }
@@ -190,7 +190,7 @@ async function fetchAndUpdateAQI() {
         const data = await response.json();
         const aqiValue = data.list[0].main.aqi; // Get AQI value
 
-        
+
         updateAQI(aqiValue);
     } catch (error) {
         console.error('Error fetching AQI data:', error);
@@ -201,8 +201,8 @@ async function fetchAndUpdateAQI() {
 document.addEventListener('DOMContentLoaded', fetchAndUpdateAQI);
 
 const API_KEY2 = '2770bf9f4ae275eb3a1da57d56b1ae0a';
-const lat2 = 35.2429; 
-const lon2 = 129.0929; 
+const lat2 = 35.2429;
+const lon2 = 129.0929;
 const url2 = `https://api.openweathermap.org/data/2.5/weather?lat=${lat2}&lon=${lon2}&appid=${API_KEY2}&units=metric`;
 
 // Chart.js initialization function (bending line graph)
@@ -255,8 +255,8 @@ async function fetchAndUpdateWeather(chart, dataKey, label) {
             throw new Error('Failed to fetch data');
         }
         const data = await response.json();
-        const value = data.main[dataKey]; 
-        const currentTime = new Date().toLocaleTimeString(); 
+        const value = data.main[dataKey];
+        const currentTime = new Date().toLocaleTimeString();
 
         chart.data.labels.push(currentTime);
         chart.data.datasets[0].data.push(value);
@@ -359,16 +359,16 @@ function toggleChart(chartId) {
 document.getElementById('show-content').addEventListener('click', function () {
     const hiddenContent = document.getElementById('hidden-content');
     if (hiddenContent.style.display === 'none' || hiddenContent.style.display === '') {
-      hiddenContent.style.display = 'block'; // Show the contents
-      this.textContent = "닫기"; // Change link text
+        hiddenContent.style.display = 'block'; // Show the contents
+        this.textContent = "닫기"; // Change link text
     } else {
-      hiddenContent.style.display = 'none'; // Hide Content
-      this.textContent = "README"; // Return to original text
+        hiddenContent.style.display = 'none'; // Hide Content
+        this.textContent = "README"; // Return to original text
     }
-  });
+});
 
 
-  async function updateCardsWithData() {
+async function updateCardsWithData() {
     try {
         const response = await fetch(url);
         if (!response.ok) {
@@ -378,15 +378,205 @@ document.getElementById('show-content').addEventListener('click', function () {
         const components = data.list[0].components;
 
         // 각 카드에 데이터 할당
-        document.getElementById('c1').textContent = `Temperature : ${components.temp} °C`;
-        document.getElementById('c2').textContent = `Humidity : ${components.humidity} %`;
         document.getElementById('c3').textContent = `PM2.5 : ${components.pm2_5} µg/m³`;
         document.getElementById('c4').textContent = `PM10 : ${components.pm10} µg/m³`;
         document.getElementById('c5').textContent = `NO2 : ${components.no2} µg/m³`;
         document.getElementById('c6').textContent = `NH3 : ${components.nh3} µg/m³`;
-        document.getElementById('c7').textContent = `CO : ${components.co} mg/m³`;
+        document.getElementById('c7').textContent = `CO : ${components.co} µg/m³`;
         document.getElementById('c8').textContent = `SO2 : ${components.so2} µg/m³`;
     } catch (error) {
         console.error('Error fetching data:', error);
     }
 }
+
+document.addEventListener('DOMContentLoaded', updateCardsWithData);
+
+
+async function updateTemperatureAndHumidity() {
+    try {
+        const response = await fetch(url2);
+        if (!response.ok) {
+            throw new Error('Failed to fetch weather data');
+        }
+        const weatherData = await response.json();
+
+        // 온도와 습도 데이터를 카드에 업데이트
+        document.getElementById('c1').textContent = `Temperature : ${weatherData.main.temp} °C`;
+        document.getElementById('c2').textContent = `Humidity : ${weatherData.main.humidity} %`;
+    } catch (error) {
+        console.error('Error fetching weather data:', error);
+    }
+}
+
+// 이 함수를 페이지 로딩 시점에 호출하여 온도와 습도 정보를 자동으로 업데이트
+document.addEventListener('DOMContentLoaded', () => {
+    updateTemperatureAndHumidity();  // 온도와 습도 업데이트
+    updateCardsWithData();           // 공기 오염 데이터 업데이트
+});
+
+const ctx4 = document.getElementById('vocChart').getContext('2d');
+const vocChart = new Chart(ctx4, {
+    type: 'doughnut',
+    data: {
+        labels: ['n-Valeraldehyde', 'iso-Valeraldehyde', 'Ammonia', 'Trimethylamine', 'Acetaldehyde'],
+        datasets: [{
+            label: 'VOC Levels',
+            data: [0, 0, 0, 0, 0], // 초기 데이터 값
+            backgroundColor: [
+                'rgba(255, 99, 132, 0.5)',
+                'rgba(54, 162, 235, 0.5)',
+                'rgba(255, 206, 86, 0.5)',
+                'rgba(75, 192, 192, 0.5)',
+                'rgba(153, 102, 255, 0.5)'
+            ],
+            borderColor: [
+                'rgba(255, 99, 132, 1)',
+                'rgba(54, 162, 235, 1)',
+                'rgba(255, 206, 86, 1)',
+                'rgba(75, 192, 192, 1)',
+                'rgba(153, 102, 255, 1)'
+            ],
+            borderWidth: 1
+        }]
+    },
+    options: {
+        responsive: true,
+        plugins: {
+            legend: {
+                display: true,
+                position: 'top'
+            },
+            tooltip: {
+                callbacks: {
+                    label: function (tooltipItem) {
+                        return `${tooltipItem.label}: ${tooltipItem.raw.toFixed(2)} ppb`; // 단위 변경 또는 필요에 맞게 조정
+                    }
+                }
+            }
+        }
+    }
+});
+
+const date = new Date();
+date.setHours(date.getHours() - 3); // Subtract three hours from the current time
+const timeZoneOffset = date.getTimezoneOffset() * 60000; // convert offset to milliseconds
+const localDate = new Date(date - timeZoneOffset);
+const formattedHour = localDate.toISOString().slice(0, 13).replace(/[-:T]/g, ''); // Format to 'YYYYMMDDHH'
+
+const url3 = `https://apis.data.go.kr/6260000/BadSmellandVOCs/getBadSmellInfo?serviceKey=C6yhUPVSxsRGta6TGsneKTtASeH9bhejrPmqK4o7o623rCyiUyy9aiACfcJh8tMTtATXL%2Br%2BIUOn9IaioG%2FZ1Q%3D%3D&pageNo=1&numOfRows=10&hourTime=${formattedHour}&resultType=json`;
+
+async function updateVocChart() {
+
+    try {
+        const response = await fetch(url3);
+        const data = await response.json();
+        if (!response.ok) {
+            throw new Error('Failed to fetch data');
+        }
+        console.log('API Data:', data);
+        const items = data.response.body.items.item[0]; // Assume the first item in the array
+
+        vocChart.data.datasets[0].data = [
+            parseFloat(items.n_Valeraldehyde) || 0,
+            parseFloat(items.iso_Valeraldehyde) || 0,
+            parseFloat(items.ammonia) || 0,
+            parseFloat(items.trimethylamine) || 0,
+            parseFloat(items.acetaldehyde) || 0
+        ];
+        console.log('Updated Chart Data:', vocChart.data.datasets[0].data);
+
+        vocChart.update();
+    } catch (error) {
+        console.error('Error updating chart:', error);
+    }
+}
+
+// Ensure the DOM is fully loaded before attaching the event listener
+document.addEventListener('DOMContentLoaded', function () {
+    document.getElementById('vocButton').addEventListener('click', updateVocChart);
+});
+
+
+const API_KEY5 = '2770bf9f4ae275eb3a1da57d56b1ae0a';
+const LAT = 35.2271;  // 부산 장전동의 위도
+const LON = 129.0890; // 부산 장전동의 경도
+const url5 = `https://api.openweathermap.org/data/2.5/forecast?lat=${LAT}&lon=${LON}&appid=${API_KEY}`;
+
+// Data arrays
+let temperatures = [];
+let humidities = [];
+let timeLabels = [];
+let tempChart;
+let humChart;
+// Fetch data from API and update charts
+function fetchDataAndUpdateCharts() {
+    console.log(url5);
+    fetch(url5)
+        .then(response => {
+            if (!response.ok) {
+                throw new Error('Network response was not ok');
+            }
+            return response.json();
+        })
+        .then(data => {
+            if (!data.list || data.list.length === 0) {
+                throw new Error('No data returned');
+            }
+            // 최근 8개 데이터만 추출
+            const sliceIndex = Math.max(data.list.length - 9, 0);
+            temperatures = data.list.slice(sliceIndex).map(entry => entry.main.temp - 273.15); // 켈빈을 섭씨로 변환
+            humidities = data.list.slice(sliceIndex).map(entry => entry.main.humidity);
+            timeLabels = data.list.slice(sliceIndex).map(entry => new Date(entry.dt * 1000).toLocaleTimeString());
+
+            updateCharts();
+        })
+        .catch(error => console.error('Error fetching data:', error));
+}
+
+// Initialize or update charts
+function updateCharts() {
+    const tempCtx = document.getElementById('hourtempChart').getContext('2d');
+    const humCtx = document.getElementById('hourhumChart').getContext('2d');
+    // Temperature chart initialization or update
+    if (tempChart) {
+        tempChart.data.labels = timeLabels;
+        tempChart.data.datasets[0].data = temperatures;
+        tempChart.update();
+    } else {
+        tempChart = new Chart(tempCtx, {
+            type: 'line',
+            data: {
+                labels: timeLabels,
+                datasets: [{
+                    label: 'Temperature (°C)',
+                    data: temperatures,
+                    borderColor: 'rgb(255, 99, 132)',
+                    backgroundColor: 'rgba(255, 99, 132, 0.5)',
+                }]
+            }
+        });
+    }
+
+    // Humidity chart initialization or update
+    if (humChart) {
+        humChart.data.labels = timeLabels;
+        humChart.data.datasets[0].data = humidities;
+        humChart.update();
+    } else {
+        humChart = new Chart(humCtx, {
+            type: 'line',
+            data: {
+                labels: timeLabels,
+                datasets: [{
+                    label: 'Humidity (%)',
+                    data: humidities,
+                    borderColor: 'rgb(54, 162, 235)',
+                    backgroundColor: 'rgba(54, 162, 235, 0.5)',
+                }]
+            }
+        });
+    }
+}
+
+// Initial call to populate the charts
+fetchDataAndUpdateCharts();

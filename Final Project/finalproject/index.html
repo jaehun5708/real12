@@ -31,7 +31,7 @@
             <a href="#" onclick="scrollToTopAndRefresh(); return false;">home</a>
             <!-- Move to id -->
             <a href="#card0"
-            onclick="document.getElementById('card0').scrollIntoView({ behavior: 'smooth' }); return false;">cards</a>
+                onclick="document.getElementById('card0').scrollIntoView({ behavior: 'smooth' }); return false;">cards</a>
             <a href="#card1"
                 onclick="document.getElementById('card1').scrollIntoView({ behavior: 'smooth' }); return false;">Temperature</a>
             <a href="#card2"
@@ -48,6 +48,8 @@
                 onclick="document.getElementById('card7').scrollIntoView({ behavior: 'smooth' }); return false;">CO</a>
             <a href="#card8"
                 onclick="document.getElementById('card8').scrollIntoView({ behavior: 'smooth' }); return false;">SO2</a>
+            <a href="#card8_5"
+                onclick="document.getElementById('card8_5').scrollIntoView({ behavior: 'smooth' }); return false;">VOC</a>
             <a href="#card9"
                 onclick="document.getElementById('card9').scrollIntoView({ behavior: 'smooth' }); return false;">chart</a>
             <a id="show-content" href="#hidden-content"
@@ -71,15 +73,19 @@
                     <div class="card" id="c8">SO2 : </div>
                 </div>
             </div>
-            
+
             <button type="button" id="card1" onclick="toggleChart('chart1')">Temperature(°C)</button>
             <div class="chart-wrapper" id="chart1-wrapper">
                 <div class="chart-container" id="chart1">
                     <canvas id="temperatureChart"></canvas>
                     <button id="temperatureButton">Update</button>
                 </div>
+                <div class="chart-container" id="chart11">
+                    <canvas id="hourtempChart"></canvas>
+                    <button id="hourtempButton">Update</button>
+                </div>
             </div>
-            
+
 
             <button type="button" id="card2" onclick="toggleChart('chart2')">Humidity(%)</button>
             <div class="chart-wrapper" id="chart2-wrapper">
@@ -87,9 +93,13 @@
                     <canvas id="humidityChart"></canvas>
                     <button id="humidityButton">Update</button>
                 </div>
+                <div class="chart-container" id="chart22">
+                    <canvas id="hourhumChart"></canvas>
+                    <button id="hourhumButton">Update</button>
+                </div>
             </div>
 
-            <button type="button" id="card3" onclick="toggleChart('chart3')">PM2.5</button>
+            <button type="button" id="card3" onclick="toggleChart('chart3')">PM2.5(µg/m³)</button>
             <div class="chart-wrapper" id="chart3-wrapper">
                 <div class="chart-container" id="chart3">
                     <h2>PM2.5</h2>
@@ -97,11 +107,12 @@
                     <button id="pm25Button">Update</button>
                 </div>
                 <div class="image-container" id="pm25ImageContainer">
-                    <img id="pm2_5Image" src="/finalproject/공기 일러스트/good.png" alt="PM2.5 상태" width="150px" height="auto">
+                    <img id="pm2_5Image" src="/finalproject/공기 일러스트/good.png" alt="PM2.5 상태" width="150px"
+                        height="auto">
                 </div>
             </div>
 
-            <button type="button" id="card4" onclick="toggleChart('chart4')">PM10</button>
+            <button type="button" id="card4" onclick="toggleChart('chart4')">PM10(µg/m³)</button>
             <div class="chart-wrapper" id="chart4-wrapper">
                 <div class="chart-container" id="chart4">
                     <h2>PM10</h2>
@@ -113,7 +124,7 @@
                 </div>
             </div>
 
-            <button type="button" id="card5" onclick="toggleChart('chart5')">NO2</button>
+            <button type="button" id="card5" onclick="toggleChart('chart5')">NO2(µg/m³)</button>
             <div class="chart-wrapper" id="chart5-wrapper">
                 <div class="chart-container" id="chart5">
                     <h2>NO2</h2>
@@ -125,7 +136,7 @@
                 </div>
             </div>
 
-            <button type="button" id="card6" onclick="toggleChart('chart6')">NH3</button>
+            <button type="button" id="card6" onclick="toggleChart('chart6')">NH3(µg/m³)</button>
             <div class="chart-wrapper" id="chart6-wrapper">
                 <div class="chart-container" id="chart6">
                     <h2>NH3</h2>
@@ -133,11 +144,12 @@
                     <button id="nh3Button">Update</button>
                 </div>
                 <div class="image-container" id="nh3ImageContainer">
-                    <img id="nh3Image" src="/finalproject/공기 일러스트/very bad.png" alt="nh3 상태" width="150px" height="auto">
+                    <img id="nh3Image" src="/finalproject/공기 일러스트/very bad.png" alt="nh3 상태" width="150px"
+                        height="auto">
                 </div>
             </div>
 
-            <button type="button" id="card7" onclick="toggleChart('chart7')">CO</button>
+            <button type="button" id="card7" onclick="toggleChart('chart7')">CO(µg/m³)</button>
             <div class="chart-wrapper" id="chart7-wrapper">
                 <div class="chart-container" id="chart7">
                     <h2>CO</h2>
@@ -149,7 +161,7 @@
                 </div>
             </div>
 
-            <button type="button" id="card8" onclick="toggleChart('chart8')">SO2</button>
+            <button type="button" id="card8" onclick="toggleChart('chart8')">SO2(µg/m³)</button>
             <div class="chart-wrapper" id="chart8-wrapper">
                 <div class="chart-container" id="chart8">
                     <h2>SO2</h2>
@@ -159,6 +171,16 @@
                 <div class="image-container" id="so2ImageContainer">
                     <img id="so2Image" src="/finalproject/공기 일러스트/good.png" alt="so2 상태" width="150px" height="auto">
                 </div>
+            </div>
+
+            <button type="button" id="card8_5" onclick="toggleChart('chart8_5')">VOC</button>
+            <div class="chart-wrapper" id="chart8_5-wrapper">
+                <div class="chart-container" id="chart8_5">
+                    <h1>VOC Doughnut Chart</h1>
+                    <canvas id="vocChart"></canvas>
+                    <button id="vocButton">Update Chart</button>
+                </div>
+
             </div>
 
             <button type="button" id="card9" onclick="toggleChart('chart9')">CHART</button>
@@ -194,12 +216,22 @@
                         activities.
                     </p>
                     <p>
+                        <strong>NH3 (Ammonia):</strong> A colorless gas used mainly in agriculture as fertilizer. It has
+                        a sharp odor and can irritate the respiratory system. Ammonia contributes to particulate matter
+                        and ground-level ozone formation.
+                    </p>
+                    <p>
                         <strong>CO (Carbon Monoxide):</strong> A dangerous gas that can cause oxygen deficiency.
                     </p>
                     <p>
                         <strong>SO2 (Sulfur Dioxide):</strong> A key pollutant resulting from the combustion of fossil
                         fuels.
                     </p>
+                    <p>
+                        <strong>VOCs (Volatile Organic Compounds): </strong>These are chemicals that vaporize at room
+                        temperature and are found in various household and industrial products. VOCs can cause
+                        respiratory issues, and long-term exposure may lead to liver, kidney, or central nervous system
+                        damage. Some VOCs are known carcinogens.
                 </div>
             </div>
         </section>

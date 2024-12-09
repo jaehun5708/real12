@@ -73,6 +73,7 @@ main {
 #card6,
 #card7,
 #card8,
+#card8_5,
 #card9 {
     background-color: #6a75f2;
     color: white;
@@ -227,11 +228,12 @@ footer {
     background-color: #f3f3f3;
     border: 1px solid #ddd;
     border-radius: 5px;
-    padding: 20px;
+    padding: 10px;
     margin: 10px;
     width: calc(25% - 20px); /* Subtract the margin from the width for proper spacing */
     text-align: center;
     box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+    height: auto;
 }
 
 @media (max-width: 800px) {

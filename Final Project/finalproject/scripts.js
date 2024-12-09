@@ -475,7 +475,7 @@ async function updateVocChart() {
         if (!response.ok) {
             throw new Error('Failed to fetch data');
         }
-        console.log('API Data:', data);
+        
         const items = data.response.body.items.item[0]; // Assume the first item in the array
 
         vocChart.data.datasets[0].data = [
@@ -512,7 +512,7 @@ let tempChart;
 let humChart;
 // Fetch data from API and update charts
 function fetchDataAndUpdateCharts() {
-    console.log(url5);
+    
     fetch(url5)
         .then(response => {
             if (!response.ok) {

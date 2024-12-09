@@ -12,7 +12,9 @@ function scrollToTopAndRefresh() {
 const API_KEY = '2770bf9f4ae275eb3a1da57d56b1ae0a';
 const lat = 35.2429;
 const lon = 129.0929;
-const url = `http://api.openweathermap.org/data/2.5/air_pollution?lat=${lat}&lon=${lon}&appid=${API_KEY}`;
+const url = `https://api.openweathermap.org/data/2.5/air_pollution?lat=${lat}&lon=${lon}&appid=${API_KEY}`;
+
+
 
 // Chart.js initialization function (bar chart)
 function createBarChart(canvasId, label) {

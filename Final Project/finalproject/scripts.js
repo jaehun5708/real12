@@ -379,7 +379,7 @@ async function updateCardsWithData() {
         const data = await response.json();
         const components = data.list[0].components;
 
-        // 각 카드에 데이터 할당
+       
         document.getElementById('c3').textContent = `PM2.5 : ${components.pm2_5} µg/m³`;
         document.getElementById('c4').textContent = `PM10 : ${components.pm10} µg/m³`;
         document.getElementById('c5').textContent = `NO2 : ${components.no2} µg/m³`;
@@ -402,7 +402,7 @@ async function updateTemperatureAndHumidity() {
         }
         const weatherData = await response.json();
 
-        // 온도와 습도 데이터를 카드에 업데이트
+        
         document.getElementById('c1').textContent = `Temperature : ${weatherData.main.temp} °C`;
         document.getElementById('c2').textContent = `Humidity : ${weatherData.main.humidity} %`;
     } catch (error) {
@@ -412,8 +412,8 @@ async function updateTemperatureAndHumidity() {
 
 // 이 함수를 페이지 로딩 시점에 호출하여 온도와 습도 정보를 자동으로 업데이트
 document.addEventListener('DOMContentLoaded', () => {
-    updateTemperatureAndHumidity();  // 온도와 습도 업데이트
-    updateCardsWithData();           // 공기 오염 데이터 업데이트
+    updateTemperatureAndHumidity();  // temp and hum update
+    updateCardsWithData();           // data update
 });
 
 const ctx4 = document.getElementById('vocChart').getContext('2d');
@@ -423,7 +423,7 @@ const vocChart = new Chart(ctx4, {
         labels: ['n-Valeraldehyde', 'iso-Valeraldehyde', 'Ammonia', 'Trimethylamine', 'Acetaldehyde'],
         datasets: [{
             label: 'VOC Levels',
-            data: [0, 0, 0, 0, 0], // 초기 데이터 값
+            data: [0, 0, 0, 0, 0], 
             backgroundColor: [
                 'rgba(255, 99, 132, 0.5)',
                 'rgba(54, 162, 235, 0.5)',
@@ -451,7 +451,7 @@ const vocChart = new Chart(ctx4, {
             tooltip: {
                 callbacks: {
                     label: function (tooltipItem) {
-                        return `${tooltipItem.label}: ${tooltipItem.raw.toFixed(2)} ppb`; // 단위 변경 또는 필요에 맞게 조정
+                        return `${tooltipItem.label}: ${tooltipItem.raw.toFixed(2)} ppb`; 
                     }
                 }
             }
@@ -500,8 +500,8 @@ document.addEventListener('DOMContentLoaded', function () {
 
 
 const API_KEY5 = '2770bf9f4ae275eb3a1da57d56b1ae0a';
-const LAT = 35.2271;  // 부산 장전동의 위도
-const LON = 129.0890; // 부산 장전동의 경도
+const LAT = 35.2271;  
+const LON = 129.0890; 
 const url5 = `https://api.openweathermap.org/data/2.5/forecast?lat=${LAT}&lon=${LON}&appid=${API_KEY}`;
 
 // Data arrays
@@ -524,7 +524,7 @@ function fetchDataAndUpdateCharts() {
             if (!data.list || data.list.length === 0) {
                 throw new Error('No data returned');
             }
-            // 최근 8개 데이터만 추출
+            // Extract only the most recent 9 data entries
             const sliceIndex = Math.max(data.list.length - 9, 0);
             temperatures = data.list.slice(sliceIndex).map(entry => entry.main.temp - 273.15); // 켈빈을 섭씨로 변환
             humidities = data.list.slice(sliceIndex).map(entry => entry.main.humidity);

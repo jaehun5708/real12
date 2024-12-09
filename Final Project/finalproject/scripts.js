@@ -104,10 +104,10 @@ function updateImage(dataKey, value) {
     const status = evaluateStatus(value, thresholds[dataKey]);
 
     const imageMap = {
-        good: "/finalproject/공기 일러스트/good.png",
-        moderate: "/finalproject/공기 일러스트/soso.png",
-        unhealthy: "/finalproject/공기 일러스트/bad.png",
-        "very-unhealthy": "/finalproject/공기 일러스트/very bad.png"
+        good: "good.png",
+        moderate: "soso.png",
+        unhealthy: "bad.png",
+        "very-unhealthy": "very bad.png"
     };
 
     imageElement.src = imageMap[status];
@@ -145,23 +145,23 @@ document.getElementById('so2Button').addEventListener('click', () => fetchAndUpd
 
 const aqiMap = {
     1: {
-        image: "/finalproject/공기 일러스트/nice.png",
+        image: "nice.png",
         text: "The air quality is good today"
     },
     2: {
-        image: "/finalproject/공기 일러스트/nice.png",
+        image: "nice.png",
         text: "The air quality is fair today"
     },
     3: {
-        image: "/finalproject/공기 일러스트/yellow.png",
+        image: "yellow.png",
         text: "The air quality is moderate"
     },
     4: {
-        image: "/finalproject/공기 일러스트/red.png",
+        image: "red.png",
         text: "The air quality is poor"
     },
     5: {
-        image: "/finalproject/공기 일러스트/red.png",
+        image: "red.png",
         text: "The air quality is very poor"
     }
 };

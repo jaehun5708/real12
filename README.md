@@ -1,10 +1,8 @@
-+데모 링크
++live demo link
     +[https://github.com/jaehun5708/real12](https://jaehun5708.github.io/real12/Final%20Project/finalproject/)
-+참고사이트
-    +[W3School](https://www.w3schools.com/)
-+마크다운 참조
++github
     +https://github.com/jaehun5708/real12
-+git 설정
++git
     +git config --global user.name "choijaehun"
     +git config --global user.email jaehun5708@namer.com
 

@@ -503,7 +503,7 @@ const API_KEY5 = '2770bf9f4ae275eb3a1da57d56b1ae0a';
 const LAT = 35.2271;  
 const LON = 129.0890; 
 const url5 = `https://api.openweathermap.org/data/2.5/forecast?lat=${LAT}&lon=${LON}&appid=${API_KEY}`;
-
+console.log(url5)
 // Data arrays
 let temperatures = [];
 let humidities = [];
